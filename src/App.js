@@ -10,7 +10,8 @@ function App() {
   const handleSubmit = async (name, location) => {
     setLoading(true);
     try {
-      const response = await fetch('http://localhost:5000/business-data', {
+      const backendUrl = "https://growthpro-dashboard-backend.onrender.com";
+      const response = await fetch(`${backendUrl}/business-data`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -31,9 +32,9 @@ function App() {
     if (!formData) return;
 
     try {
-      const response = await fetch(
-        `http://localhost:5000/regenerate-headline?name=${formData.name}&location=${formData.location}`
-      );
+     const response = await fetch(
+  `${backendUrl}/regenerate-headline?name=${formData.name}&location=${formData.location}`
+)
       const data = await response.json();
       setHeadline(data.headline);
     } catch (error) {
