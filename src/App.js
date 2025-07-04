@@ -28,17 +28,18 @@ function App() {
   };
 
   const handleRegenerate = async () => {
-    if (!formData) return;
+  if (!formData) return;
 
-    try {
-     const response = await fetch(`https://growthpro-dashboard-backend.onrender.com/regenerate-headline?name=${name}&location=${location}`);
+  try {
+    const response = await fetch(`https://growthpro-dashboard-backend.onrender.com/regenerate-headline?name=${formData.name}&location=${formData.location}`);
 
-      const data = await response.json();
-      setHeadline(data.headline);
-    } catch (error) {
-      console.error('Error regenerating headline:', error);
-    }
-  };
+    const data = await response.json();
+    setHeadline(data.headline);
+  } catch (error) {
+    console.error('Error regenerating headline:', error);
+  }
+};
+
 
   return (
     <div className="min-h-screen bg-gray-100 py-8 px-4 flex flex-col items-center">
